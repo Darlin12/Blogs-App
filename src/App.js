@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import NavBar from "./components/NavBar";
+import Blog from "./components/blog";
+import posts from "./posts";
+import Footer from "./components/Footer";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="root">
+      <NavBar className="navbar" />
+      <div className="blogs-container">
+        {posts.map((post) => {
+          return (
+            <Blog
+              title={post.title}
+              author={post.author}
+              date={post.date}
+              content={post.content}
+            />
+          );
+        })}
+      </div>
+
+      <Footer />
     </div>
   );
 }
